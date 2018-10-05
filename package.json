@@ -6,6 +6,7 @@
     "nodemon": "^1.18.4",
     "react": "^16.5.2",
     "react-bootstrap": "^0.32.4",
+    "react-columns": "^1.2.0",
     "react-dom": "^16.5.2",
     "react-scripts": "2.0.4"
   },
