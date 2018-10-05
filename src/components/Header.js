@@ -8,7 +8,7 @@ import { Grid, Col, Row, Button } from 'react-bootstrap';
 class Header extends Component {
     render() {
         return (
-            <Grid className="header" style = {styles.div}>
+            <Grid className="header" fluid = {true} style = {styles.div}>
 
                 <Col xs={12} md={4}>
 
@@ -29,7 +29,8 @@ class Header extends Component {
 
 let styles = {
     div: {
-        background: '#1b2631',
+        paddingTop: 10,
+        background: '#24292e',
         color: 'white',
         fontSize: 60,
         fontFamily: "sans-serif",
