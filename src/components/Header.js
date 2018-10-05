@@ -8,16 +8,19 @@ import { Grid, Col, Row, Button } from 'react-bootstrap';
 class Header extends Component {
     render() {
         return (
-            <Grid className="header" fluid = {true} style = {styles.div}>
+            <Grid className="header" style = {styles.div}>
 
-                    <Col xs={12} md={4}>
-                    </Col>
-                    <Col xs={12} md={4}>
-                        <p>Quick Math</p>
-                    </Col>
-                    <Col xs={12} md={4}>
-                        <Button>ye</Button>
-                    </Col>
+                <Col xs={12} md={4}>
+
+                </Col>
+
+                <Col xs={12} md={4}>
+                    <p>Quick Math</p>
+                </Col>
+
+                <Col xs={12} md={4} style = {styles.button}>
+                    <Button bsStyle="primary">Login</Button>
+                </Col>
 
             </Grid>
         );
@@ -25,11 +28,15 @@ class Header extends Component {
 }
 
 let styles = {
-    div:{
-        background: 'blue',
+    div: {
+        background: '#1b2631',
         color: 'white',
         fontSize: 60,
+        fontFamily: "sans-serif",
+    },
 
+    button: {
+        textAlign: 'right',
     }
 }
 
