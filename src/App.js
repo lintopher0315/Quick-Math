@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header';
 import Question from './components/Question';
+import AnsButton from './components/AnsButton';
 import { Grid, Col, Row, Button } from 'react-bootstrap';
 
 class App extends Component {
@@ -14,19 +15,19 @@ class App extends Component {
 
                 <Grid className="questions" style = {styles.grid}>
                     <Col xs={12} md={6} style = {styles.question}>
-                        <p>Answer 1</p>
+                        <AnsButton/>
                     </Col>
 
                     <Col xs={12} md={6} style = {styles.question}>
-                        <p>Answer 2</p>
+                        <AnsButton/>
                     </Col>
 
                     <Col xs={6} md={6} style = {styles.question}>
-                        <p>Answer 3</p>
+                        <AnsButton/>
                     </Col>
 
                     <Col xs={6} md={6} style = {styles.question}>
-                        <p>Answer 4</p>
+                        <AnsButton/>
                     </Col>
                 </Grid>
             </div>
@@ -38,13 +39,12 @@ let styles = {
     grid: {
         fontSize: 35,
         fontFamily: "sans-serif",
-        background: '#f4f6f6',
         marginTop: 30,
         marginBottom: 30,
     },
 
     question: {
-        outlineStyle: 'solid',
+
     }
 }
 
