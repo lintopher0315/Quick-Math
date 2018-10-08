@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header';
 import Question from './components/Question';
 import AnsButton from './components/AnsButton';
+import Timer from './components/Timer';
 import { Grid, Col, Row, Button } from 'react-bootstrap';
 
 class App extends Component {
@@ -30,6 +31,7 @@ class App extends Component {
                         <AnsButton/>
                     </Col>
                 </Grid>
+                <Timer/>
             </div>
         );
     }
