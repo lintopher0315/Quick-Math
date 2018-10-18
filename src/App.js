@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Question from './components/Question';
 import AnsButton from './components/AnsButton';
 import Timer from './components/Timer';
+import Login from './components/Login';
 import { Grid, Col, Row, Button } from 'react-bootstrap';
 
 class App extends Component {
@@ -12,26 +13,6 @@ class App extends Component {
         return (
             <div className="App" style = {{background: '#e5e8e8'}}>
                 <Header/>
-                <Question/>
-
-                <Grid className="questions" style = {styles.grid}>
-                    <Col xs={12} md={6} style = {styles.question}>
-                        <AnsButton/>
-                    </Col>
-
-                    <Col xs={12} md={6} style = {styles.question}>
-                        <AnsButton/>
-                    </Col>
-
-                    <Col xs={6} md={6} style = {styles.question}>
-                        <AnsButton/>
-                    </Col>
-
-                    <Col xs={6} md={6} style = {styles.question}>
-                        <AnsButton/>
-                    </Col>
-                </Grid>
-                <Timer/>
             </div>
         );
     }
