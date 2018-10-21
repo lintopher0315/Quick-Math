@@ -5,9 +5,7 @@ import { Grid, Col, Row, Button } from 'react-bootstrap';
 import Login from './Login';
 import QuizPage from './QuizPage';
 import SignUp from './SignUp';
-
-//import {Columns} from 'react-columns';
-//var Columns = require('react-columns');
+import Home from './Home';
 
 class Header extends Component {
     render() {
@@ -16,9 +14,11 @@ class Header extends Component {
                 <Grid className="header" fluid = {true} style = {styles.div}>
 
                     <Col xs={12} md={4} style={{textAlign: 'left',}}>
-                        <Button bsStyle="primary">
-                            Home
-                        </Button>
+                        <Link to='/'>
+                            <Button bsStyle="success">
+                                Home
+                            </Button>
+                        </Link>
                     </Col>
 
                     <Col xs={12} md={4}>
@@ -41,9 +41,10 @@ class Header extends Component {
                 </Grid>
 
                 <Switch>
-                    <Route exact path='/' component={QuizPage} />
+                    <Route exact path='/' component={Home} />
                     <Route path='/login' component={Login} />
                     <Route path='/signup' component={SignUp} />
+                    <Route path='/quiz' component={QuizPage} />
                 </Switch>
             </div>
         );
