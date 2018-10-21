@@ -29,6 +29,9 @@ class Header extends Component {
                                 Login
                             </Button>
                         </Link>
+                        <Button bsStyle="primary" style ={{marginLeft: 10,}}>
+                            Sign Up
+                        </Button>
                     </Col>
 
                 </Grid>
