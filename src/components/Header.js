@@ -15,8 +15,10 @@ class Header extends Component {
             <div className="head">
                 <Grid className="header" fluid = {true} style = {styles.div}>
 
-                    <Col xs={12} md={4}>
-
+                    <Col xs={12} md={4} style={{textAlign: 'left',}}>
+                        <Button bsStyle="primary">
+                            Home
+                        </Button>
                     </Col>
 
                     <Col xs={12} md={4}>
@@ -30,7 +32,7 @@ class Header extends Component {
                             </Button>
                         </Link>
                         <Link to='/signup'>
-                            <Button bsStyle="primary" style ={{marginLeft: 10,}}>
+                            <Button bsStyle="primary" style={{marginLeft: 10,}}>
                                 Sign Up
                             </Button>
                         </Link>
