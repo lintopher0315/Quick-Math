@@ -4,7 +4,7 @@ import { Link, Switch, Route } from 'react-router-dom';
 import { Grid, Col, Row, Button } from 'react-bootstrap';
 import Login from './Login';
 import QuizPage from './QuizPage';
-
+import SignUp from './SignUp';
 
 //import {Columns} from 'react-columns';
 //var Columns = require('react-columns');
@@ -29,9 +29,11 @@ class Header extends Component {
                                 Login
                             </Button>
                         </Link>
-                        <Button bsStyle="primary" style ={{marginLeft: 10,}}>
-                            Sign Up
-                        </Button>
+                        <Link to='/signup'>
+                            <Button bsStyle="primary" style ={{marginLeft: 10,}}>
+                                Sign Up
+                            </Button>
+                        </Link>
                     </Col>
 
                 </Grid>
@@ -39,6 +41,7 @@ class Header extends Component {
                 <Switch>
                     <Route exact path='/' component={QuizPage} />
                     <Route path='/login' component={Login} />
+                    <Route path='/signup' component={SignUp} />
                 </Switch>
             </div>
         );
