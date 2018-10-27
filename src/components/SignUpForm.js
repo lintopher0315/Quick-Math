@@ -8,8 +8,8 @@ class SignUpForm extends Component {
         fetch('/users', {
             method: 'POST',
             body: JSON.stringify({
-                usr: "username1",
-                pass: "password2"
+                usr: this.textInput.value,
+                pass: this.textInput2.value
             }),
             headers: {
                 "Content-Type": "application/json"
@@ -30,7 +30,7 @@ class SignUpForm extends Component {
                         Username:
                     </Col>
                     <Col sm={10}>
-                        <FormControl type="username" placeholder="Username"/>
+                        <FormControl type="username" placeholder="Username" inputRef={input => this.textInput = input}/>
                     </Col>
                 </FormGroup>
 
@@ -39,13 +39,13 @@ class SignUpForm extends Component {
                         Password:
                     </Col>
                     <Col sm={10}>
-                        <FormControl type="password" placeholder="Password"/>
+                        <FormControl type="password" placeholder="Password" inputRef={input => this.textInput2 = input}/>
                     </Col>
                 </FormGroup>
 
                 <FormGroup>
                     <Col smOffset={2} sm={10}>
-                        <Button bsStyle="default" onClick={this.sendUser} id="sub">Sign Up</Button>
+                        <Button bsStyle="default" onClick={this.sendUser.bind(this)} id="sub">Sign Up</Button>
                     </Col>
                 </FormGroup>
             </Form>

@@ -6,13 +6,7 @@ router.use(bodyParser.json());
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   //res.send('respond with a resource');
-    res.json([{
-        id: 1,
-        username: "1234"
-    }, {
-        id: 2,
-        username: "asdf"
-    }]);
+    res.send("asdf");
 });
 
 router.post('/', function(req, res) {
