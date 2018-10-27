@@ -8,7 +8,12 @@ router.use(bodyParser.json());
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   //res.send('respond with a resource');
-    res.send("asdf");
+    res.send("users");
+});
+
+router.get('/check', function(req, res, next) {
+  //res.send('respond with a resource');
+    res.send("/check");
 });
 
 router.post('/', function(req, res) {
@@ -27,6 +32,21 @@ router.post('/', function(req, res) {
     });
 
 
+});
+
+router.post('/check', function(req, res) {
+    let username = req.body.usr;
+    let password = req.body.pass;
+
+    User.find({'username': username, 'password': password}, function(err, user) {
+        if (err) {
+            console.log("login error");
+            return done(err);
+        }
+        if (user.length != 0) {
+            console.log("username exists, login successful");
+        }
+    })
 });
 
 module.exports = router;

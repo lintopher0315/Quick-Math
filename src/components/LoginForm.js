@@ -3,6 +3,25 @@ import ReactDOM from 'react-dom';
 import { Button, Form, FormGroup, ControlLabel, FormControl, HelpBlock, Col } from 'react-bootstrap';
 
 class LoginUsername extends Component {
+
+    sendUser() {
+        fetch('/users/check', {
+            method: 'POST',
+            body: JSON.stringify({
+                usr: this.textInput.value,
+                pass: this.textInput2.value
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(function(response) {
+            return response.json()
+        }).then(function(body) {
+            console.log(body);
+        })
+    }
+
     render() {
         return (
             <Form horizontal>
@@ -11,7 +30,7 @@ class LoginUsername extends Component {
                         Username:
                     </Col>
                     <Col sm={10}>
-                        <FormControl type="username" placeholder="Username" />
+                        <FormControl type="username" placeholder="Username" inputRef={input => this.textInput = input}/>
                     </Col>
                 </FormGroup>
 
@@ -20,13 +39,13 @@ class LoginUsername extends Component {
                         Password:
                     </Col>
                     <Col sm={10}>
-                        <FormControl type="password" placeholder="Password" />
+                        <FormControl type="password" placeholder="Password" inputRef={input => this.textInput2 = input}/>
                     </Col>
                 </FormGroup>
 
                 <FormGroup>
                     <Col smOffset={2} sm={10}>
-                        <Button bsStyle="default">Submit</Button>
+                        <Button bsStyle="default" onClick={this.sendUser.bind(this)}>Submit</Button>
                     </Col>
                 </FormGroup>
             </Form>
