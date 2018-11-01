@@ -30,8 +30,6 @@ router.post('/', function(req, res) {
         if (err) throw err;
         console.log(user);
     });
-
-
 });
 
 router.post('/check', function(req, res) {
@@ -45,6 +43,17 @@ router.post('/check', function(req, res) {
         }
         if (user.length != 0) {
             console.log("username exists, login successful");
+            return res.send({
+                success: true,
+                status: 200
+            });
+        }
+        else if (user.length == 0) {
+            console.log("username does not exist, try again");
+            return res.send({
+                success: false,
+                status: 500
+            });
         }
     })
 });
