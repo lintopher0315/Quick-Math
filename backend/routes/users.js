@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var router = express.Router();
 
+var Token = require('../models/token');
 var User = require('../models/user');
 
 router.use(bodyParser.json());
@@ -43,6 +44,17 @@ router.post('/check', function(req, res) {
         }
         if (user.length != 0) {
             console.log("username exists, login successful");
+
+            var newToken = new Token({
+                username: username,
+                status: true
+            });
+
+            Token.createToken(newToken, function(err, token) {
+                if (err) throw err;
+                console.log(token);
+            })
+
             return res.send({
                 success: true,
                 status: 200

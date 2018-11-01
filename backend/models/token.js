@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost:27017/tokens', { useNewUrlParser: true} );
 
-var db = mongoose.connection;
+var dbt = mongoose.connection;
 
 var TokenSchema = mongoose.Schema({
     username: {
