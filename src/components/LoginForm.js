@@ -68,7 +68,7 @@ class LoginUsername extends Component {
 
 let styles = {
     div: {
-        fontFamily: "sans-serif",
+        fontFamily: "Open Sans",
         fontSize: 40,
         marginTop: 40,
         color: '#2980b9',

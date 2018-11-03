@@ -22,7 +22,7 @@ class Header extends Component {
                     </Col>
 
                     <Col xs={12} md={4}>
-                        <p>Quick Math</p>
+                        <p style={styles.title}>Quick Math</p>
                     </Col>
 
                     <Col xs={12} md={4} style = {styles.button}>
@@ -57,7 +57,11 @@ let styles = {
         background: '#24292e',
         color: 'white',
         fontSize: 60,
-        fontFamily: "sans-serif",
+        fontFamily: 'sans-serif',
+    },
+
+    title: {
+        fontFamily: 'Roboto Mono',
     },
 
     button: {

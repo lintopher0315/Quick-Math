@@ -16,7 +16,7 @@ class Login extends Component {
 
 let styles = {
     div: {
-        fontFamly: "sans-serif",
+        fontFamly: "Roboto Mono",
         fontSize: 40,
         marginTop: 40,
         background: '#f4f6f6',
