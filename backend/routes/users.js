@@ -45,6 +45,12 @@ router.post('/check', function(req, res) {
         if (user.length != 0) {
             console.log("username exists, login successful");
 
+            Token.remove({'username': username}, function(err, result) {
+                if (err) {
+                    console.log("token error");
+                }
+            });
+
             var newToken = new Token({
                 username: username,
                 status: true
