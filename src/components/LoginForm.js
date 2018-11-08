@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Button, Form, FormGroup, ControlLabel, FormControl, HelpBlock, Col } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 
-class LoginUsername extends Component {
+class LoginForm extends Component {
 
     state = {
         redirect: false
@@ -23,6 +23,7 @@ class LoginUsername extends Component {
         .then(res => res.json())
         .then(json => {
             if(json.success){
+                this.props.handler(this.textInput.value);
                 this.setState({ redirect: true });
             }
         })
@@ -75,4 +76,4 @@ let styles = {
     }
 }
 
-export default LoginUsername;
+export default LoginForm;

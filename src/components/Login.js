@@ -8,7 +8,7 @@ class Login extends Component {
         return (
             <div className="login-title" style = {styles.div}>
                 <p style = {styles.text}>Login</p>
-                <LoginForm/>
+                <LoginForm handler={this.props.handler}/>
             </div>
         );
     }

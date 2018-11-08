@@ -8,6 +8,28 @@ import SignUp from './SignUp';
 import Home from './Home';
 
 class Header extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.handler = this.handler.bind(this);
+
+        this.state = {
+            auth: false,
+            username: ""
+        };
+    }
+
+    handler(u) {
+        this.setState({
+            username: u
+        });
+    }
+
+    componentWillMount() {
+
+    }
+
     render() {
         return (
             <div className="head">
@@ -19,6 +41,7 @@ class Header extends Component {
                                 Home
                             </Button>
                         </Link>
+                        {this.state.username}
                     </Col>
 
                     <Col xs={12} md={4}>
@@ -42,7 +65,7 @@ class Header extends Component {
 
                 <Switch>
                     <Route exact path='/' component={Home} />
-                    <Route path='/login' component={Login} />
+                    <Route path='/login' component={() => <Login handler={this.handler}/>} />
                     <Route path='/signup' component={SignUp} />
                     <Route path='/quiz' component={QuizPage} />
                 </Switch>
