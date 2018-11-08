@@ -36,12 +36,26 @@ class Header extends Component {
                 <Grid className="header" fluid = {true} style = {styles.div}>
 
                     <Col xs={12} md={4} style={{textAlign: 'left',}}>
-                        <Link to='/'>
-                            <Button bsStyle="success">
-                                Home
-                            </Button>
-                        </Link>
-                        {this.state.username}
+                        <div className="name">
+                            {this.state.username != "" ? (
+                                <div className="left">
+                                    <Link to='/' style={{marginRight: 35}}>
+                                        <Button bsStyle="success" style={{fontFamily: 'sans-serif', fontSize: 14,}}>
+                                            Home
+                                        </Button>
+                                    </Link>
+                                    <Button bsStyle="default" style={{fontFamily: 'Roboto Mono', fontSize: 25,}}>
+                                        {this.state.username}
+                                    </Button>
+                                </div>
+                            ) : (
+                                <Link to='/' style={{marginRight: 35}}>
+                                    <Button bsStyle="success" style={{fontFamily: 'sans-serif', fontSize: 14,}}>
+                                        Home
+                                    </Button>
+                                </Link>
+                            )}
+                        </div>
                     </Col>
 
                     <Col xs={12} md={4}>
@@ -60,7 +74,6 @@ class Header extends Component {
                             </Button>
                         </Link>
                     </Col>
-
                 </Grid>
 
                 <Switch>
@@ -85,6 +98,11 @@ let styles = {
 
     title: {
         fontFamily: 'Roboto Mono',
+    },
+
+    name: {
+        fontFamily: 'Roboto Mono',
+        fontSize: 20,
     },
 
     button: {
