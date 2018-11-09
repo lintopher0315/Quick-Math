@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Button, Form, FormGroup, ControlLabel, FormControl, HelpBlock, Col } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 
 class SignUpForm extends Component {
+
+    state = {
+        redirect: false
+    }
 
     sendUser() {
         fetch('/users', {
@@ -15,14 +20,22 @@ class SignUpForm extends Component {
                 "Content-Type": "application/json"
             }
         })
-        .then(function(response) {
-            return response.json()
-        }).then(function(body) {
-            console.log(body);
+        .then(res => res.json())
+        .then(json => {
+            if (json.success) {
+                this.setState({ redirect: true});
+            }
+        })
+        .catch( () => {
+            console.log("signup error");
         })
     }
 
     render() {
+        const { redirect } = this.state;
+        if (redirect) {
+            return <Redirect to='/login'/>;
+        }
         return (
             <Form horizontal componentClass="form">
                 <FormGroup controlId="username" componentClass="u">
