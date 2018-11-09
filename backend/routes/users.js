@@ -26,15 +26,36 @@ router.post('/', function(req, res) {
     let password = req.body.pass;
     console.log(username + " " + password);
 
-    var newUser = new User({
-        username: username,
-        password: password
-    });
+    User.find({'username': username, 'password': password}, function(err, user) {
+        if (err) {
+            console.log("signup error");
+            return done(err);
+        }
+        if (user.length != 0) {
+            console.log("username is already taken");
+            return res.send({
+                success: false,
+                status: 500
+            });
+        }
+        else if (user.length == 0) {
+            console.log("use created successfully");
 
-    User.createUser(newUser, function(err, user) {
-        if (err) throw err;
-        console.log(user);
-    });
+            var newUser = new User({
+                username: username,
+                password: password
+            });
+
+            User.createUser(newUser, function(err, user) {
+                if (err) throw err;
+                console.log(user);
+            });
+            return res.send({
+                success: true,
+                status: 200
+            });
+        }
+    })
 });
 
 router.post('/check', function(req, res) {
