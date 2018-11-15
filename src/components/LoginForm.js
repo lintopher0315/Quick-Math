@@ -25,7 +25,7 @@ class LoginForm extends Component {
             if(json.success){
                 let temp = this.textInput.value;
                 this.setState({ redirect: true });
-                this.props.handler(temp);
+                this.props.handler(temp, true);
             }
         })
         .catch( () =>{

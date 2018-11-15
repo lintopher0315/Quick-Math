@@ -20,14 +20,11 @@ class Header extends Component {
         };
     }
 
-    handler(u) {
+    handler(u, a) {
         this.setState({
-            username: u
+            username: u,
+            auth: a
         });
-    }
-
-    componentWillMount() {
-
     }
 
     render() {
@@ -63,16 +60,27 @@ class Header extends Component {
                     </Col>
 
                     <Col xs={12} md={4} style = {styles.button}>
-                        <Link to='/login'>
-                            <Button bsStyle="primary">
-                                Login
-                            </Button>
-                        </Link>
-                        <Link to='/signup'>
-                            <Button bsStyle="primary" style={{marginLeft: 10,}}>
-                                Sign Up
-                            </Button>
-                        </Link>
+                        {this.state.auth ? (
+                            <Link to='/login'>
+                                <Button bsStyle="primary">
+                                    Logout
+                                </Button>
+                            </Link>
+                        ) : (
+                            <div className="form">
+                                <Link to='/login'>
+                                    <Button bsStyle="primary">
+                                        Login
+                                    </Button>
+                                </Link>
+                                <Link to='/signup'>
+                                    <Button bsStyle="primary" style={{marginLeft: 10,}}>
+                                        Sign Up
+                                    </Button>
+                                </Link>
+                            </div>
+                        )}
+
                     </Col>
                 </Grid>
 

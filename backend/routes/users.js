@@ -17,10 +17,6 @@ router.get('/check', function(req, res, next) {
     res.send("/check");
 });
 
-router.get('/auth', function(req, res, next) {
-
-});
-
 router.post('/', function(req, res) {
     let username = req.body.usr;
     let password = req.body.pass;
