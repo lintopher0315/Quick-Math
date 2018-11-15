@@ -17,6 +17,35 @@ router.get('/check', function(req, res, next) {
     res.send("/check");
 });
 
+router.post('/auth', function(req, res) {
+    let username = req.body.usr;
+    console.log(username);
+
+    User.find({'username': username}, function(err, user) {
+        if (err) {
+            console.log("logout error");
+            return done(err);
+        }
+        if (user.length != 0) {
+            Token.remove({'username': username}, function(err, result) {
+                if (err) {
+                    console.log("token error");
+                }
+            });
+            return res.send({
+                success: true,
+                status: 200
+            });
+        }
+        else if (user.length == 0) {
+            return res.send({
+                success: false,
+                status: 500
+            });
+        }
+    })
+});
+
 router.post('/', function(req, res) {
     let username = req.body.usr;
     let password = req.body.pass;

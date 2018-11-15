@@ -27,6 +27,27 @@ class Header extends Component {
         });
     }
 
+    sendUser() {
+        fetch('/users/auth', {
+            method: 'POST',
+            body: JSON.stringify({
+                usr: this.state.username
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => res.json())
+        .then(json => {
+            if (json.success) {
+                this.setState({ auth: false, username: "" });
+            }
+        })
+        .catch( () => {
+            console.log("err");
+        })
+    }
+
     render() {
         return (
             <div className="head">
@@ -62,7 +83,7 @@ class Header extends Component {
                     <Col xs={12} md={4} style = {styles.button}>
                         {this.state.auth ? (
                             <Link to='/login'>
-                                <Button bsStyle="primary">
+                                <Button bsStyle="primary" onClick={this.sendUser.bind(this)}>
                                     Logout
                                 </Button>
                             </Link>
