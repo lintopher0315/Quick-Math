@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { Button, Form, FormGroup, ControlLabel, FormControl, HelpBlock, Col } from 'react-bootstrap';
+import { Button, Form, FormGroup, ControlLabel, FormControl, Col } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 
 class SignUpForm extends Component {

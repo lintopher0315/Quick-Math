@@ -10,6 +10,7 @@
     "react-bootstrap": "^0.32.4",
     "react-columns": "^1.2.0",
     "react-dom": "^16.5.2",
+    "react-notifications": "^1.4.3",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.4"
   },

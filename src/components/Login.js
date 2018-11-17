@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { Switch, Route } from 'react-router-dom';
 import LoginForm from './LoginForm';
 
 class Login extends Component {

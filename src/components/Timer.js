@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { Grid, Col, Row, Button } from 'react-bootstrap';
 
 class Timer extends Component {
     render() {

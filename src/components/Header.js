@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { Link, Switch, Route } from 'react-router-dom';
-import { Grid, Col, Row, Button } from 'react-bootstrap';
+import { Grid, Col, Button } from 'react-bootstrap';
 import Login from './Login';
 import QuizPage from './QuizPage';
 import SignUp from './SignUp';
@@ -55,7 +54,7 @@ class Header extends Component {
 
                     <Col xs={12} md={4} style={{textAlign: 'left',}}>
                         <div className="name">
-                            {this.state.username != "" ? (
+                            {this.state.username !== "" ? (
                                 <div className="left">
                                     <Link to='/' style={{marginRight: 35}}>
                                         <Button bsStyle="success" style={{fontFamily: 'sans-serif', fontSize: 14,}}>

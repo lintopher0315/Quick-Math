@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Question from './Question';
 import AnsButton from './AnsButton';
 import Timer from './Timer';
-import { Grid, Col, Row, Button } from 'react-bootstrap';
+import { Grid, Col } from 'react-bootstrap';
 
 class QuizPage extends Component {
     render() {
