@@ -4,26 +4,43 @@ import AnsButton from './AnsButton';
 import { Grid, Col } from 'react-bootstrap';
 
 class Practice extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.handler = this.handler.bind(this);
+
+        this.state = {
+            round: 1,
+        }
+    }
+
+    handler(u) {
+        this.setState({
+            round: u,
+        });
+    }
+
     render() {
         return (
             <div className="App" style = {{background: '#e5e8e8'}}>
-                <Question/>
+                <Question/>{this.state.round}
 
                 <Grid className="questions" style = {styles.grid}>
                     <Col xs={12} md={6} style = {styles.question}>
-                        <AnsButton/>
+                        <AnsButton handler={this.handler} round={this.state.round}/>
                     </Col>
 
                     <Col xs={12} md={6} style = {styles.question}>
-                        <AnsButton/>
+                        <AnsButton handler={this.handler} round={this.state.round}/>
                     </Col>
 
                     <Col xs={6} md={6} style = {styles.question}>
-                        <AnsButton/>
+                        <AnsButton handler={this.handler} round={this.state.round}/>
                     </Col>
 
                     <Col xs={6} md={6} style = {styles.question}>
-                        <AnsButton/>
+                        <AnsButton handler={this.handler} round={this.state.round}/>
                     </Col>
                 </Grid>
             </div>
