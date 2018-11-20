@@ -12,6 +12,11 @@ class Home extends Component {
                         Start
                     </Button>
                 </Link>
+                <Link to='/practice'>
+                    <Button bsStyle="primary">
+                        Practice
+                    </Button>
+                </Link>
             </div>
         );
     }

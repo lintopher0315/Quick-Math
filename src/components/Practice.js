@@ -3,7 +3,7 @@ import Question from './Question';
 import AnsButton from './AnsButton';
 import { Grid, Col } from 'react-bootstrap';
 
-class QuizPage extends Component {
+class Practice extends Component {
     render() {
         return (
             <div className="App" style = {{background: '#e5e8e8'}}>
@@ -44,4 +44,4 @@ let styles = {
     }
 }
 
-export default QuizPage;
+export default Practice;

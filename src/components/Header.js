@@ -5,6 +5,7 @@ import Login from './Login';
 import QuizPage from './QuizPage';
 import SignUp from './SignUp';
 import Home from './Home';
+import Practice from './Practice';
 
 class Header extends Component {
 
@@ -109,6 +110,7 @@ class Header extends Component {
                     <Route path='/login' component={() => <Login handler={this.handler}/>} />
                     <Route path='/signup' component={SignUp} />
                     <Route path='/quiz' component={QuizPage} />
+                    <Route path='/practice' component={Practice} />
                 </Switch>
             </div>
         );
