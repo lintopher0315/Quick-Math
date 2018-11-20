@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Question from './Question';
 import AnsButton from './AnsButton';
+import Results from './Results';
 import { Grid, Col } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 
 class Practice extends Component {
 
@@ -22,6 +24,11 @@ class Practice extends Component {
     }
 
     render() {
+        var redirect = this.state.round;
+        if (redirect === 11) {
+            console.log("asdf");
+            return <Redirect to='/results'/>;
+        }
         return (
             <div className="App" style = {{background: '#e5e8e8'}}>
                 <Question/>{this.state.round}
