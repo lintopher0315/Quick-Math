@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var router = express.Router();
 
+var Question = require('../models/question');
 var Token = require('../models/token');
 var User = require('../models/user');
 
