@@ -18,6 +18,18 @@ router.get('/check', function(req, res, next) {
     res.send("/check");
 });
 
+router.get('/question', function(req, res, next) {
+    Question.countDocuments().exec(function (err, count) {
+        var random = Math.floor(Math.random() * count);
+
+        Question.findOne().skip(random).exec(
+            function(err, question) {
+                return res.send(JSON.stringify(question));
+            }
+        )
+    })
+});
+
 router.post('/auth', function(req, res) {
     let username = req.body.usr;
     console.log(username);

@@ -5,6 +5,7 @@ class Question extends Component {
         return (
             <div className="question" style = {styles.div}>
                 <p style = {styles.text}>Question</p>
+                {this.props.ques}
             </div>
         );
     }

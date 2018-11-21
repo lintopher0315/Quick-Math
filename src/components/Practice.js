@@ -14,6 +14,8 @@ class Practice extends Component {
 
         this.state = {
             round: 1,
+            question: '',
+            answer: '',
         }
     }
 
@@ -21,6 +23,17 @@ class Practice extends Component {
         this.setState({
             round: u,
         });
+    }
+
+    componentWillMount() {
+        fetch('/users/question')
+        .then(res => res.json())
+        .then(json => {
+            console.log(json);
+            var q = json.question;
+            var a = json.answer;
+            this.setState({ question: q, answer: a});
+        })
     }
 
     render() {
@@ -31,7 +44,7 @@ class Practice extends Component {
         }
         return (
             <div className="App" style = {{background: '#e5e8e8'}}>
-                <Question/>{this.state.round}
+                <Question ques={this.state.question}/>{this.state.round}
 
                 <Grid className="questions" style = {styles.grid}>
                     <Col xs={12} md={6} style = {styles.question}>
