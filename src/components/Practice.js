@@ -24,7 +24,12 @@ class Practice extends Component {
         }
     }
 
-    handler(u) {
+    handler(u, a) {
+        if (a === this.state.answer) {
+            this.setState({
+                score: this.state.score + 5,
+            });
+        }
         this.setState({
             round: u,
         });
