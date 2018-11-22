@@ -98,7 +98,11 @@ class Practice extends Component {
         var redirect = this.state.round;
         if (redirect === 11) {
             console.log("asdf");
-            return <Redirect to='/results'/>;
+            {/*return <Redirect to='/results'/>;*/}
+            return <Redirect to={{
+                    pathname: '/results',
+                    state: { score: this.state.score }
+                }}/>;
         }
         return (
             <div className="App" style = {{background: '#e5e8e8'}}>

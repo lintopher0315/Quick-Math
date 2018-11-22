@@ -11,7 +11,7 @@ class Results extends Component {
     render() {
         return (
             <div className="results">
-                Here are the results!
+                Here are the results!{this.props.location.state.score}
                 <Link to='/'>
                     <Button bsStyle="primary">
                         Home
