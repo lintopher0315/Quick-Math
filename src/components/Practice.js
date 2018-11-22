@@ -16,6 +16,11 @@ class Practice extends Component {
             round: 1,
             question: '',
             answer: '',
+            b1: '',
+            b2: '',
+            b3: '',
+            b4: '',
+            score: 0
         }
     }
 
@@ -23,9 +28,6 @@ class Practice extends Component {
         this.setState({
             round: u,
         });
-    }
-
-    componentWillMount() {
         fetch('/users/question')
         .then(res => res.json())
         .then(json => {
@@ -33,6 +35,57 @@ class Practice extends Component {
             var q = json.question;
             var a = json.answer;
             this.setState({ question: q, answer: a});
+            this.randomAssign(this.state.answer);
+        })
+    }
+
+    randomAssign(ans) {
+        var random = Math.floor(Math.random() * 4);
+        switch(random) {
+            case 0:
+                this.setState({
+                    b1: ans,
+                    b2: Math.floor(Math.random() * 50),
+                    b3: Math.floor(Math.random() * 50),
+                    b4: Math.floor(Math.random() * 50)
+                });
+                break;
+            case 1:
+                this.setState({
+                    b1: Math.floor(Math.random() * 50),
+                    b2: ans,
+                    b3: Math.floor(Math.random() * 50),
+                    b4: Math.floor(Math.random() * 50)
+                });
+                break;
+            case 2:
+                this.setState({
+                    b1: Math.floor(Math.random() * 50),
+                    b2: Math.floor(Math.random() * 50),
+                    b3: ans,
+                    b4: Math.floor(Math.random() * 50)
+                });
+                break;
+            case 3:
+                this.setState({
+                    b1: Math.floor(Math.random() * 50),
+                    b2: Math.floor(Math.random() * 50),
+                    b3: Math.floor(Math.random() * 50),
+                    b4: ans
+                });
+                break;
+        }
+    }
+
+    componentDidMount() {
+        fetch('/users/question')
+        .then(res => res.json())
+        .then(json => {
+            console.log(json);
+            var q = json.question;
+            var a = json.answer;
+            this.setState({ question: q, answer: a});
+            this.randomAssign(this.state.answer);
         })
     }
 
@@ -48,19 +101,19 @@ class Practice extends Component {
 
                 <Grid className="questions" style = {styles.grid}>
                     <Col xs={12} md={6} style = {styles.question}>
-                        <AnsButton handler={this.handler} round={this.state.round}/>
+                        <AnsButton handler={this.handler} round={this.state.round} answer={this.state.b1}/>
                     </Col>
 
                     <Col xs={12} md={6} style = {styles.question}>
-                        <AnsButton handler={this.handler} round={this.state.round}/>
+                        <AnsButton handler={this.handler} round={this.state.round} answer={this.state.b2}/>
                     </Col>
 
                     <Col xs={6} md={6} style = {styles.question}>
-                        <AnsButton handler={this.handler} round={this.state.round}/>
+                        <AnsButton handler={this.handler} round={this.state.round} answer={this.state.b3}/>
                     </Col>
 
                     <Col xs={6} md={6} style = {styles.question}>
-                        <AnsButton handler={this.handler} round={this.state.round}/>
+                        <AnsButton handler={this.handler} round={this.state.round} answer={this.state.b4}/>
                     </Col>
                 </Grid>
             </div>
