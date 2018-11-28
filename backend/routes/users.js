@@ -45,6 +45,11 @@ router.post('/auth', function(req, res) {
                     console.log("token error");
                 }
             });
+            User.update({username: username}, {$set:{status: "offline"}}, function(err, user) {
+                if (err) {
+                    console.log("user status error");
+                }
+            });
             return res.send({
                 success: true,
                 status: 200
@@ -77,7 +82,7 @@ router.post('/', function(req, res) {
             });
         }
         else if (user.length == 0) {
-            console.log("use created successfully");
+            console.log("user created successfully");
 
             var newUser = new User({
                 username: username,
@@ -111,6 +116,12 @@ router.post('/check', function(req, res) {
             Token.remove({'username': username}, function(err, result) {
                 if (err) {
                     console.log("token error");
+                }
+            });
+
+            User.update({username: username}, {$set:{status: "online"}}, function(err, user) {
+                if (err) {
+                    console.log("user status error");
                 }
             });
 
