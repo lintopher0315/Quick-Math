@@ -114,7 +114,7 @@ class Header extends Component {
                     <Route path='/quiz' component={QuizPage} />
                     <Route path='/practice' component={Practice} />
                     <Route path='/results' component={Results} />
-                    <Route path='/search' component={Search} />
+                    <Route path='/search' component={() => <Search user={this.state.username}/>} />
                 </Switch>
             </div>
         );

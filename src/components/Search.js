@@ -4,6 +4,18 @@ import { Link } from 'react-router-dom';
 
 class Search extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            username: this.props.user,
+        };
+    }
+
+    componentDidMount() {
+
+    }
+
     render() {
         return (
             <div className="search">
