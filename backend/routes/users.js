@@ -19,6 +19,19 @@ router.get('/check', function(req, res, next) {
     res.send("/check");
 });
 
+router.post('/stopwaiting', function(req, res) {
+    var username = req.body.usr;
+    User.update({'username': username}, {$set:{status: "online"}}, function(err, user) {
+        if (err) {
+            console.log("user exit waiting error");
+        }
+    });
+    return res.send({
+        success: true,
+        status: 200
+    });
+})
+
 router.post('/waiting', function(req, res) {
     var username = req.body.usr;
     User.update({'username': username}, {$set:{status: "waiting"}}, function(err, user) {

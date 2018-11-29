@@ -12,6 +12,24 @@ class Search extends Component {
         };
     }
 
+    exitWaiting() {
+        fetch('/users/stopwaiting', {
+            method: 'POST',
+            body: JSON.stringify({
+                usr: this.state.username,
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => res.json())
+        .then(json => {
+            if (json.success) {
+                console.log("exited waiting");
+            }
+        })
+    }
+
     componentDidMount() {
         fetch('/users/waiting', {
             method: 'POST',
@@ -35,7 +53,7 @@ class Search extends Component {
             <div className="search">
                 Waiting
                 <Link to='/'>
-                    <Button>
+                    <Button onClick={this.exitWaiting.bind(this)}>
                         Return to Home
                     </Button>
                 </Link>
