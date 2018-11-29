@@ -19,6 +19,19 @@ router.get('/check', function(req, res, next) {
     res.send("/check");
 });
 
+router.post('/waiting', function(req, res) {
+    var username = req.body.usr;
+    User.update({'username': username}, {$set:{status: "waiting"}}, function(err, user) {
+        if (err) {
+            console.log("user waiting error");
+        }
+    });
+    return res.send({
+        success: true,
+        status: 200
+    });
+})
+
 router.get('/question', function(req, res, next) {
     Question.countDocuments().exec(function (err, count) {
         var random = Math.floor(Math.random() * count);
@@ -46,7 +59,7 @@ router.post('/auth', function(req, res) {
                     console.log("token error");
                 }
             });
-            User.update({username: username}, {$set:{status: "offline"}}, function(err, user) {
+            User.update({'username': username}, {$set:{status: "offline"}}, function(err, user) {
                 if (err) {
                     console.log("user status error");
                 }
@@ -120,7 +133,7 @@ router.post('/check', function(req, res) {
                 }
             });
 
-            User.update({username: username}, {$set:{status: "online"}}, function(err, user) {
+            User.update({'username': username}, {$set:{status: "online"}}, function(err, user) {
                 if (err) {
                     console.log("user status error");
                 }

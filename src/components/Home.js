@@ -15,7 +15,7 @@ class Home extends Component {
     render() {
         return (
             <div className="home">
-                {this.state.username != "" ? (
+                {this.state.username !== "" ? (
                     <div className="show">
                         <Link to='/search'>
                             <Button bsStyle="primary">

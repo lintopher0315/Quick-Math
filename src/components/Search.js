@@ -13,7 +13,21 @@ class Search extends Component {
     }
 
     componentDidMount() {
-
+        fetch('/users/waiting', {
+            method: 'POST',
+            body: JSON.stringify({
+                usr: this.state.username,
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => res.json())
+        .then(json => {
+            if (json.success) {
+                console.log("currently waiting");
+            }
+        })
     }
 
     render() {
