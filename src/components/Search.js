@@ -8,9 +8,11 @@ class Search extends Component {
         return (
             <div className="search">
                 Waiting
-                <Button>
-                    Return to Home
-                </Button>
+                <Link to='/'>
+                    <Button>
+                        Return to Home
+                    </Button>
+                </Link>
             </div>
         );
     }
