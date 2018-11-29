@@ -108,7 +108,7 @@ class Header extends Component {
                 </Grid>
 
                 <Switch>
-                    <Route exact path='/' component={Home} />
+                    <Route exact path='/' component={() => <Home user={this.state.username}/>} />
                     <Route path='/login' component={() => <Login handler={this.handler}/>} />
                     <Route path='/signup' component={SignUp} />
                     <Route path='/quiz' component={QuizPage} />
