@@ -7,6 +7,7 @@ import SignUp from './SignUp';
 import Home from './Home';
 import Practice from './Practice';
 import Results from './Results';
+import Search from './Search';
 
 class Header extends Component {
 
@@ -113,6 +114,7 @@ class Header extends Component {
                     <Route path='/quiz' component={QuizPage} />
                     <Route path='/practice' component={Practice} />
                     <Route path='/results' component={Results} />
+                    <Route path='/search' component={Search} />
                 </Switch>
             </div>
         );

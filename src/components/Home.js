@@ -7,7 +7,7 @@ class Home extends Component {
     render() {
         return (
             <div className="home">
-                <Link to='/quiz'>
+                <Link to='/search'>
                     <Button bsStyle="primary">
                         Start
                     </Button>
