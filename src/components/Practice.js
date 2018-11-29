@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Question from './Question';
 import AnsButton from './AnsButton';
-import Results from './Results';
 import { Grid, Col } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 
@@ -79,6 +78,8 @@ class Practice extends Component {
                     b4: ans
                 });
                 break;
+            default:
+                break;
         }
     }
 
@@ -97,8 +98,6 @@ class Practice extends Component {
     render() {
         var redirect = this.state.round;
         if (redirect === 11) {
-            console.log("asdf");
-            {/*return <Redirect to='/results'/>;*/}
             return <Redirect to={{
                     pathname: '/results',
                     state: { score: this.state.score }
