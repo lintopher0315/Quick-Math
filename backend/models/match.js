@@ -18,6 +18,12 @@ var MatchSchema = mongoose.Schema({
     score2: {
         type: Number,
     },
+    question1: {
+        type: Number,
+    },
+    question2: {
+        type: Number,
+    }
 });
 
 var Match = module.exports = mongoose.model('Match', MatchSchema);

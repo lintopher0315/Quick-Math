@@ -147,6 +147,8 @@ router.post('/waiting', function(req, res) {
                     username2: username,
                     score1: 0,
                     score2: 0,
+                    question1: 1,
+                    question2: 1,
                 });
                 Match.createMatch(newMatch, function(err, match) {
                     if (err) throw err;
