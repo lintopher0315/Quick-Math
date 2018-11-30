@@ -148,13 +148,16 @@ class QuizPage extends Component {
         .then(res => res.json())
         .then(json => {
             var s = "";
+            var r = "";
             if (this.state.order === "first") {
                 var s = json[0].score2;
+                var r = json[0].question2;
             }
             else if (this.state.order === "second") {
                 var s = json[0].score1;
+                var r = json[0].question1;
             }
-            this.setState({ opponentScore: s });
+            this.setState({ opponentScore: s, opponentQuestion: r });
         })
     }
 
@@ -199,7 +202,7 @@ class QuizPage extends Component {
     render() {
         return (
             <div className="App" style = {{background: '#e5e8e8'}}>
-                <Question ques={this.state.question}/>{this.state.round}{this.state.opponent}{this.state.opponentScore}
+                <Question ques={this.state.question}/>{this.state.round}"|"{this.state.opponent}"|"{this.state.opponentScore}"|"{this.state.opponentQuestion}
 
                 <Grid className="questions" style = {styles.grid}>
                     <Col xs={12} md={6} style = {styles.question}>
