@@ -23,6 +23,7 @@ class QuizPage extends Component {
             b4: '',
             score: 0,
             opponentScore: 0,
+            opponentQuestion: 1,
             seconds: 0
         }
     }
@@ -53,7 +54,25 @@ class QuizPage extends Component {
         }
         this.setState({
             round: u,
-        });
+        }, () => {
+            fetch('/users/incrementround', {
+                method: 'POST',
+                body: JSON.stringify({
+                    usr: this.state.username,
+                    order: this.state.order,
+                    round: this.state.round,
+                }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(res => res.json())
+            .then(json => {
+                if (json.success) {
+                    console.log("round updated");
+                }
+            })
+        })
         fetch('/users/question')
         .then(res => res.json())
         .then(json => {

@@ -19,6 +19,35 @@ router.get('/check', function(req, res, next) {
     res.send("/check");
 });
 
+router.post('/incrementround', function(req, res) {
+    var username = req.body.usr;
+    var order = req.body.order;
+    var round = req.body.round;
+
+    if (order === "first") {
+        Match.update({'username1': username}, {$set:{'question1': round}}, function(err, match) {
+            if (err) {
+                console.log("increment round error");
+            }
+            return res.send({
+                success: true,
+                status: 200,
+            });
+        })
+    }
+    else if (order === "second") {
+        Match.update({'username2': username}, {$set:{'question2': round}}, function(err, match) {
+            if (err) {
+                console.log("increment round error");
+            }
+            return res.send({
+                success: true,
+                status: 200,
+            });
+        })
+    }
+})
+
 router.post('/opponentscore', function(req, res) {
     var username = req.body.usr;
     var order = req.body.order;
