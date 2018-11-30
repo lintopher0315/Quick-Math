@@ -21,7 +21,9 @@ class QuizPage extends Component {
             b2: '',
             b3: '',
             b4: '',
-            score: 0
+            score: 0,
+            opponentScore: 0,
+            seconds: 0
         }
     }
 
@@ -110,7 +112,39 @@ class QuizPage extends Component {
         }
     }
 
+    tick() {
+        this.setState(prevState => ({
+            seconds: prevState.seconds + 1
+        }));
+        fetch('/users/opponentscore', {
+            method: 'POST',
+            body: JSON.stringify({
+                usr: this.state.username,
+                order: this.state.order,
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => res.json())
+        .then(json => {
+            var s = "";
+            if (this.state.order === "first") {
+                var s = json[0].score2;
+            }
+            else if (this.state.order === "second") {
+                var s = json[0].score1;
+            }
+            this.setState({ opponentScore: s });
+        })
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+
     componentDidMount() {
+        this.interval = setInterval(() => this.tick(), 1000)
         fetch('/users/getopponent', {
             method: 'POST',
             body: JSON.stringify({
@@ -146,7 +180,7 @@ class QuizPage extends Component {
     render() {
         return (
             <div className="App" style = {{background: '#e5e8e8'}}>
-                <Question ques={this.state.question}/>{this.state.round}{this.state.opponent}
+                <Question ques={this.state.question}/>{this.state.round}{this.state.opponent}{this.state.opponentScore}
 
                 <Grid className="questions" style = {styles.grid}>
                     <Col xs={12} md={6} style = {styles.question}>

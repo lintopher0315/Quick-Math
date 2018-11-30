@@ -19,12 +19,34 @@ router.get('/check', function(req, res, next) {
     res.send("/check");
 });
 
+router.post('/opponentscore', function(req, res) {
+    var username = req.body.usr;
+    var order = req.body.order;
+
+    if (order === "first") {
+        Match.find({'username1': username}, function(err, match) {
+            if (err) {
+                console.log("opponent score error");
+            }
+            return res.send(JSON.stringify(match));
+        })
+    }
+    else if (order === "second") {
+        Match.find({'username2': username}, function(err, match) {
+            if (err) {
+                console.log("opponent score error");
+            }
+            return res.send(JSON.stringify(match));
+        })
+    }
+})
+
 router.post('/updatescore', function(req, res) {
     var username = req.body.usr;
     var order = req.body.order;
     var score = req.body.score;
 
-    if ( order === "first") {
+    if (order === "first") {
         Match.update({'username1': username}, {$set:{'score1': score}}, function(err, user) {
             if (err) {
                 console.log("score update error");
