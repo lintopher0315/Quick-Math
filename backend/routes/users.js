@@ -19,6 +19,27 @@ router.get('/check', function(req, res, next) {
     res.send("/check");
 });
 
+router.post('/getopponent', function(req, res) {
+    var username = req.body.usr;
+    var order = req.body.order;
+    if (order === "first") {
+        Match.find({'username1': username}, function(err, match) {
+            if (err) {
+                console.log("opponent user error");
+            }
+            return res.send(JSON.stringify(match));
+        })
+    }
+    else if (order === "second") {
+        Match.find({'username2': username}, function(err, match) {
+            if (err) {
+                console.log("opponent user error");
+            }
+            return res.send(JSON.stringify(match));
+        })
+    }
+})
+
 router.post('/stopwaiting', function(req, res) {
     var username = req.body.usr;
     User.update({'username': username}, {$set:{status: "online"}}, function(err, user) {
