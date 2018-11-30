@@ -242,9 +242,18 @@ class QuizPage extends Component {
                         <AnsButton handler={this.handler} round={this.state.round} answer={this.state.b4}/>
                     </Col>
                 </Grid>
-                <p style={styles.grid}>
-                    {this.state.opponent}: {this.state.opponentScore}
-                </p>
+                <Grid className="score" style={styles.grid}>
+                    <Col xs={12} md={6}>
+                        <p style={styles.grid}>
+                            {this.state.username}: {this.state.score}
+                        </p>
+                    </Col>
+                    <Col xs={12} md={6}>
+                        <p style={styles.grid}>
+                            {this.state.opponent}: {this.state.opponentScore}
+                        </p>
+                    </Col>
+                </Grid>
             </div>
         );
     }
