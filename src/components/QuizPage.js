@@ -29,7 +29,25 @@ class QuizPage extends Component {
         if (a === this.state.answer) {
             this.setState({
                 score: this.state.score + 5,
-            });
+            }, () => {
+                fetch('/users/updatescore', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        usr: this.state.username,
+                        order: this.state.order,
+                        score: this.state.score,
+                    }),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+                .then(res => res.json())
+                .then(json => {
+                    if (json.success) {
+                        console.log("score updated");
+                    }
+                })
+            })
         }
         this.setState({
             round: u,

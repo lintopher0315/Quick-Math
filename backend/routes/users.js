@@ -19,6 +19,35 @@ router.get('/check', function(req, res, next) {
     res.send("/check");
 });
 
+router.post('/updatescore', function(req, res) {
+    var username = req.body.usr;
+    var order = req.body.order;
+    var score = req.body.score;
+
+    if ( order === "first") {
+        Match.update({'username1': username}, {$set:{'score1': score}}, function(err, user) {
+            if (err) {
+                console.log("score update error");
+            }
+            return res.send({
+                success: true,
+                status: 200,
+            });
+        });
+    }
+    else if (order === "second") {
+        Match.update({'username2': username}, {$set:{'score2': score}}, function(err, user) {
+            if (err) {
+                console.log("score update error");
+            }
+            return res.send({
+                success: true,
+                status: 200,
+            });
+        });
+    }
+})
+
 router.post('/getopponent', function(req, res) {
     var username = req.body.usr;
     var order = req.body.order;
