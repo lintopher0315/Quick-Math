@@ -62,38 +62,46 @@ class QuizPage extends Component {
         })
     }
 
+    randomExclude(ans) {
+        var n1 = Math.floor(Math.random() * 50);
+        if (n1 >= ans) {
+            n1++;
+        }
+        return n1;
+    }
+
     randomAssign(ans) {
         var random = Math.floor(Math.random() * 4);
         switch(random) {
             case 0:
                 this.setState({
                     b1: ans,
-                    b2: Math.floor(Math.random() * 50),
-                    b3: Math.floor(Math.random() * 50),
-                    b4: Math.floor(Math.random() * 50)
+                    b2: this.randomExclude(ans),
+                    b3: this.randomExclude(ans),
+                    b4: this.randomExclude(ans)
                 });
                 break;
             case 1:
                 this.setState({
-                    b1: Math.floor(Math.random() * 50),
+                    b1: this.randomExclude(ans),
                     b2: ans,
-                    b3: Math.floor(Math.random() * 50),
-                    b4: Math.floor(Math.random() * 50)
+                    b3: this.randomExclude(ans),
+                    b4: this.randomExclude(ans)
                 });
                 break;
             case 2:
                 this.setState({
-                    b1: Math.floor(Math.random() * 50),
-                    b2: Math.floor(Math.random() * 50),
+                    b1: this.randomExclude(ans),
+                    b2: this.randomExclude(ans),
                     b3: ans,
-                    b4: Math.floor(Math.random() * 50)
+                    b4: this.randomExclude(ans)
                 });
                 break;
             case 3:
                 this.setState({
-                    b1: Math.floor(Math.random() * 50),
-                    b2: Math.floor(Math.random() * 50),
-                    b3: Math.floor(Math.random() * 50),
+                    b1: this.randomExclude(ans),
+                    b2: this.randomExclude(ans),
+                    b3: this.randomExclude(ans),
                     b4: ans
                 });
                 break;
