@@ -65,12 +65,21 @@ router.post('/waiting', function(req, res) {
         if (err) {
             console.log("waiting error");
         }
-        console.log(doc);
         if (doc != null) {
             User.update({'username': username}, {$set:{status: "ingame"}}, function(err, user) {
                 if (err) {
                     console.log("user waiting error2");
                 }
+                var newMatch = new Match({
+                    username1: doc.toObject().username,
+                    username2: username,
+                    score1: 0,
+                    score2: 0,
+                });
+                Match.createMatch(newMatch, function(err, match) {
+                    if (err) throw err;
+                    console.log(match);
+                })
             });
             return res.send({
                 success: true,
