@@ -87,8 +87,17 @@ class Search extends Component {
                 }
             })
         }
-        else if (this.state.found === "second" || this.state.found === "firstFin") {
-            return <Redirect to='/quiz'/>;
+        else if (this.state.found === "second") {
+            return <Redirect to={{
+                pathname: '/quiz',
+                state: { username: this.state.username, order: "second" }
+            }}/>;
+        }
+        else if (this.state.found === "firstFin") {
+            return <Redirect to={{
+                pathname: '/quiz',
+                state: { username: this.state.username, order: "first" }
+            }}/>;
         }
         return (
             <div className="search">
