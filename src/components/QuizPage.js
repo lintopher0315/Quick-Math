@@ -216,8 +216,8 @@ class QuizPage extends Component {
         }
         else if (this.state.round === 11) {
             return (
-                <div className="done">
-                    "Waiting for opponent to finish"
+                <div className="done" style={styles.grid}>
+                    <p>Waiting for opponent to finish.</p>
                 </div>
             );
         }

@@ -86,15 +86,16 @@ class QuizResults extends Component {
     render() {
         return (
             <div className="quizresults">
-                <div className="content">
+                <div className="content" style={styles.grid}>
 
                     Here are the results!
-                    {"\n"}
+                    <br />
+                    <br />
+                    <br />
                     {this.state.username}:{this.state.score}
-                    {"\n"}
+                    <br />
                     {this.state.opponent}:{this.state.opponentScore}
-                    {"\n"}
-                    Time: {this.state.time}
+                    <br />
 
                 </div>
                 <Link to='/'>
@@ -105,6 +106,15 @@ class QuizResults extends Component {
             </div>
         );
     }
+}
+
+let styles = {
+    grid: {
+        fontSize: 35,
+        fontFamily: "sans-serif",
+        marginTop: 30,
+        marginBottom: 30,
+    },
 }
 
 export default QuizResults;

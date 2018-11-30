@@ -113,7 +113,7 @@ class Practice extends Component {
         }
         return (
             <div className="App" style = {{background: '#e5e8e8'}}>
-                <Question ques={this.state.question}/>{this.state.round}
+                <Question ques={this.state.question} round={this.state.round}/>
 
                 <Grid className="questions" style = {styles.grid}>
                     <Col xs={12} md={6} style = {styles.question}>
