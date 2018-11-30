@@ -8,6 +8,8 @@ class QuizPage extends Component {
     constructor(props) {
         super(props);
 
+        this.handler = this.handler.bind(this);
+
         this.state = {
             username: this.props.location.state.username,
             opponent: '',
@@ -21,6 +23,25 @@ class QuizPage extends Component {
             b4: '',
             score: 0
         }
+    }
+
+    handler(u, a) {
+        if (a === this.state.answer) {
+            this.setState({
+                score: this.state.score + 5,
+            });
+        }
+        this.setState({
+            round: u,
+        });
+        fetch('/users/question')
+        .then(res => res.json())
+        .then(json => {
+            var q = json.question;
+            var a = json.answer;
+            this.setState({ question: q, answer: a});
+            this.randomAssign(this.state.answer);
+        })
     }
 
     randomAssign(ans) {
@@ -99,23 +120,23 @@ class QuizPage extends Component {
     render() {
         return (
             <div className="App" style = {{background: '#e5e8e8'}}>
-                <Question/>{this.state.opponent}
+                <Question ques={this.state.question}/>{this.state.round}{this.state.opponent}
 
                 <Grid className="questions" style = {styles.grid}>
                     <Col xs={12} md={6} style = {styles.question}>
-                        <AnsButton/>
+                        <AnsButton handler={this.handler} round={this.state.round} answer={this.state.b1}/>
                     </Col>
 
                     <Col xs={12} md={6} style = {styles.question}>
-                        <AnsButton/>
+                        <AnsButton handler={this.handler} round={this.state.round} answer={this.state.b2}/>
                     </Col>
 
                     <Col xs={6} md={6} style = {styles.question}>
-                        <AnsButton/>
+                        <AnsButton handler={this.handler} round={this.state.round} answer={this.state.b3}/>
                     </Col>
 
                     <Col xs={6} md={6} style = {styles.question}>
-                        <AnsButton/>
+                        <AnsButton handler={this.handler} round={this.state.round} answer={this.state.b4}/>
                     </Col>
                 </Grid>
             </div>
