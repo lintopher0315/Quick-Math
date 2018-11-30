@@ -43,7 +43,7 @@ class LoginForm extends Component {
                     <Col componentClass={ControlLabel} sm={2} style={styles.div}>
                         Username:
                     </Col>
-                    <Col sm={10}>
+                    <Col sm={9}>
                         <FormControl type="username" placeholder="Username" inputRef={input => this.textInput = input}/>
                     </Col>
                 </FormGroup>
@@ -52,13 +52,13 @@ class LoginForm extends Component {
                     <Col componentClass={ControlLabel} sm={2} style={styles.div}>
                         Password:
                     </Col>
-                    <Col sm={10}>
+                    <Col sm={9}>
                         <FormControl type="password" placeholder="Password" inputRef={input => this.textInput2 = input}/>
                     </Col>
                 </FormGroup>
 
                 <FormGroup>
-                    <Col smOffset={2} sm={10}>
+                    <Col smOffset={1} sm={10}>
                         <Button bsStyle="default" onClick={this.sendUser.bind(this)}>Submit</Button>
                     </Col>
                 </FormGroup>
@@ -69,9 +69,9 @@ class LoginForm extends Component {
 
 let styles = {
     div: {
-        fontFamily: "Open Sans",
-        fontSize: 40,
-        marginTop: 40,
+        fontFamily: "Roboto Mono",
+        fontSize: 25,
+        marginTop: -10,
         color: '#2980b9',
     }
 }

@@ -7,7 +7,9 @@ class Results extends Component {
     render() {
         return (
             <div className="results">
-                Here are the results!{this.props.location.state.score}
+                <p style={styles.grid}>
+                    Score: {this.props.location.state.score}
+                </p>
                 <Link to='/'>
                     <Button bsStyle="primary">
                         Home
@@ -16,6 +18,15 @@ class Results extends Component {
             </div>
         );
     }
+}
+
+let styles = {
+    grid: {
+        fontSize: 35,
+        fontFamily: "sans-serif",
+        marginTop: 30,
+        marginBottom: 30,
+    },
 }
 
 export default Results;
