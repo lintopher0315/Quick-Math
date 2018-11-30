@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class Search extends Component {
 
@@ -9,7 +9,15 @@ class Search extends Component {
 
         this.state = {
             username: this.props.user,
+            found: "",
+            seconds: 0,
         };
+    }
+
+    tick() {
+        this.setState(prevState => ({
+            seconds: prevState.seconds + 1
+        }));
     }
 
     exitWaiting() {
@@ -30,7 +38,12 @@ class Search extends Component {
         })
     }
 
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+
     componentDidMount() {
+        this.interval = setInterval(() => this.tick(), 1000)
         fetch('/users/waiting', {
             method: 'POST',
             body: JSON.stringify({
@@ -43,12 +56,40 @@ class Search extends Component {
         .then(res => res.json())
         .then(json => {
             if (json.success) {
+                if (json.order === "first") {
+                    this.setState({ found: "first" });
+                }
+                else if (json.order === "second") {
+                    this.setState({ found: "second" });
+                }
                 console.log("currently waiting");
             }
         })
     }
 
     render() {
+        if (this.state.found === "first") {
+            fetch('/users/ingame', {
+                method: 'POST',
+                body: JSON.stringify({
+                    usr: this.state.username,
+                }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(res => res.json())
+            .then(json => {
+                console.log("asdf");
+                if (json.success) {
+                    console.log("1234");
+                    this.setState({ found: "firstFin"});
+                }
+            })
+        }
+        else if (this.state.found === "second" || this.state.found === "firstFin") {
+            return <Redirect to='/quiz'/>;
+        }
         return (
             <div className="search">
                 Waiting

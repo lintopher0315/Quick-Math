@@ -32,6 +32,28 @@ router.post('/stopwaiting', function(req, res) {
     });
 })
 
+router.post('/ingame', function(req, res) {
+    var username = req.body.usr;
+    User.find({'username': username, status: 'ingame'}, function(err, user) {
+        console.log(user.length);
+        if (err) {
+            console.log("first player error");
+        }
+        if (user.length == 0) {
+            return res.send({
+                success: false,
+                status: 200,
+            })
+        }
+        else {
+            return res.send({
+                success: true,
+                status: 500
+            });
+        }
+    })
+})
+
 router.post('/waiting', function(req, res) {
     var username = req.body.usr;
     User.update({'username': username}, {$set:{status: "waiting"}}, function(err, user) {
@@ -50,12 +72,20 @@ router.post('/waiting', function(req, res) {
                     console.log("user waiting error2");
                 }
             });
+            return res.send({
+                success: true,
+                status: 200,
+                order: "second",
+            });
+        }
+        else {
+            return res.send({
+                success: true,
+                status: 200,
+                order: "first",
+            });
         }
     })
-    return res.send({
-        success: true,
-        status: 200
-    });
 })
 
 router.get('/question', function(req, res, next) {
