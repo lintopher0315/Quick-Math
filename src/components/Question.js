@@ -4,7 +4,7 @@ class Question extends Component {
     render() {
         return (
             <div className="question" style = {styles.div}>
-                <p style = {styles.text}>Question</p>
+                <p style = {styles.text}>Question {this.props.round}</p>
                 {this.props.ques}
             </div>
         );

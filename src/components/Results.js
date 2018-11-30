@@ -4,10 +4,6 @@ import { Link } from 'react-router-dom';
 
 class Results extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className="results">
