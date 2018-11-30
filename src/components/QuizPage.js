@@ -210,6 +210,7 @@ class QuizPage extends Component {
                     score: this.state.score,
                     opponentScore: this.state.opponentScore,
                     seconds: this.state.seconds,
+                    order: this.state.order,
                 }
             }}/>;
         }

@@ -6,6 +6,33 @@ class QuizResults extends Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            username: this.props.location.state.username,
+            opponent: this.props.location.state.opponent,
+            score: this.props.location.state.score,
+            opponentScore: this.props.location.state.opponentScore,
+            time: this.props.location.state.seconds,
+            order: this.props.location.state.order,
+        }
+    }
+
+    componentDidMount() {
+        fetch('/users/exitmatch', {
+            method: 'POST',
+            body: JSON.stringify({
+                usr: this.state.username,
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => res.json())
+        .then(json => {
+            if (json.success) {
+                console.log("status: online");
+            }
+        })
     }
 
     render() {
@@ -15,11 +42,11 @@ class QuizResults extends Component {
 
                     Here are the results!
                     {"\n"}
-                    {this.props.location.state.username}:{this.props.location.state.score}
+                    {this.state.username}:{this.state.score}
                     {"\n"}
-                    {this.props.location.state.opponent}:{this.props.location.state.opponentScore}
+                    {this.state.opponent}:{this.state.opponentScore}
                     {"\n"}
-                    Time: {this.props.location.state.seconds}
+                    Time: {this.state.seconds}
 
                 </div>
                 <Link to='/'>

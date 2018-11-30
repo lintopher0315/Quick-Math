@@ -19,6 +19,20 @@ router.get('/check', function(req, res, next) {
     res.send("/check");
 });
 
+router.post('/exitmatch', function(req, res) {
+    var username = req.body.usr;
+    console.log(username);
+    User.update({'username': username}, {$set:{status: "online"}}, function(err, user) {
+        if (err) {
+            console.log("exit status set error");
+        }
+        return res.send({
+            success: true,
+            status: 200,
+        })
+    })
+})
+
 router.post('/incrementround', function(req, res) {
     var username = req.body.usr;
     var order = req.body.order;
