@@ -39,6 +39,19 @@ router.post('/waiting', function(req, res) {
             console.log("user waiting error");
         }
     });
+    User.findOneAndUpdate({status: "waiting"}, {$set:{status: "ingame"}}, function(err, doc) {
+        if (err) {
+            console.log("waiting error");
+        }
+        console.log(doc);
+        if (doc != null) {
+            User.update({'username': username}, {$set:{status: "ingame"}}, function(err, user) {
+                if (err) {
+                    console.log("user waiting error2");
+                }
+            });
+        }
+    })
     return res.send({
         success: true,
         status: 200
