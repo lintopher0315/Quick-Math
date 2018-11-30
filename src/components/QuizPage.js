@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Question from './Question';
 import AnsButton from './AnsButton';
 import { Grid, Col } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 
 class QuizPage extends Component {
 
@@ -200,6 +201,25 @@ class QuizPage extends Component {
     }
 
     render() {
+        if (this.state.round === 11 && this.state.opponentQuestion >= 11) {
+            return <Redirect to={{
+                pathname: '/quizresults',
+                state: {
+                    username: this.state.username,
+                    opponent: this.state.opponent,
+                    score: this.state.score,
+                    opponentScore: this.state.opponentScore,
+                    seconds: this.state.seconds,
+                }
+            }}/>;
+        }
+        else if (this.state.round === 11) {
+            return (
+                <div className="done">
+                    "Waiting for opponent to finish"
+                </div>
+            );
+        }
         return (
             <div className="App" style = {{background: '#e5e8e8'}}>
                 <Question ques={this.state.question}/>{this.state.round}"|"{this.state.opponent}"|"{this.state.opponentScore}"|"{this.state.opponentQuestion}
