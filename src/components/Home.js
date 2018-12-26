@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
+import { Grid, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 class Home extends Component {
@@ -17,16 +17,34 @@ class Home extends Component {
             <div className="home">
                 {this.state.username !== "" ? (
                     <div className="show">
-                        <Link to='/search'>
-                            <Button bsStyle="primary">
-                                Start
-                            </Button>
-                        </Link>
-                        <Link to='/practice'>
-                            <Button bsStyle="primary">
-                                Practice
-                            </Button>
-                        </Link>
+                        <div className="start" style={styles.title}>
+                            Get Started
+                            <br />
+                        </div>
+                        <div className="button" style={styles.text}>
+                            <Grid className="select" fluid={true}>
+                                <Col xs={12} md={6}>
+                                    <p>
+                                        Compete against players online to complete a set of <br />math problems before they finish.
+                                    </p>
+                                    <Link to='/search'>
+                                        <Button bsStyle="primary">
+                                            Start
+                                        </Button>
+                                    </Link>
+                                </Col>
+                                <Col xs={12} md={6}>
+                                    <p>
+                                        Practice a set of problems on your own to enhance <br />your speed and improve your stats.
+                                    </p>
+                                    <Link to='/practice'>
+                                        <Button bsStyle="primary">
+                                            Practice
+                                        </Button>
+                                    </Link>
+                                </Col>
+                            </Grid>
+                        </div>
                     </div>
                 ): (
                     <div>
