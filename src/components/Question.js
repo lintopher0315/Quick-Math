@@ -13,9 +13,10 @@ class Question extends Component {
 
 let styles = {
     div: {
-        fontFamily: "sans-serif",
-        fontSize: 40,
+        fontFamily: "Roboto Mono",
+        fontSize: 45,
         marginTop: 40,
+        paddingBottom: 20,
         background: '#f4f6f6',
     },
 

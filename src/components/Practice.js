@@ -19,11 +19,21 @@ class Practice extends Component {
             b2: '',
             b3: '',
             b4: '',
-            score: 0
+            score: 0,
+            seconds: 0,
+            totSeconds: 0,
         }
     }
 
+    tick() {
+        this.setState(prevState => ({
+            seconds: parseFloat((prevState.seconds + 0.1).toFixed(2))
+        }));
+    }
+
     handler(u, a) {
+        this.setState({ totSeconds: this.state.totSeconds + this.state.seconds });
+        this.setState({ seconds: 0 });
         if (a === this.state.answer) {
             this.setState({
                 score: this.state.score + 5,
@@ -91,7 +101,12 @@ class Practice extends Component {
         }
     }
 
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+
     componentDidMount() {
+        this.interval = setInterval(() => this.tick(), 100)
         fetch('/users/question')
         .then(res => res.json())
         .then(json => {
@@ -116,20 +131,35 @@ class Practice extends Component {
                 <Question ques={this.state.question} round={this.state.round}/>
 
                 <Grid className="questions" style = {styles.grid}>
-                    <Col xs={12} md={6} style = {styles.question}>
+                    <Col xs={12} md={6}>
                         <AnsButton handler={this.handler} round={this.state.round} answer={this.state.b1}/>
                     </Col>
 
-                    <Col xs={12} md={6} style = {styles.question}>
+                    <Col xs={12} md={6}>
                         <AnsButton handler={this.handler} round={this.state.round} answer={this.state.b2}/>
                     </Col>
 
-                    <Col xs={6} md={6} style = {styles.question}>
+                    <Col xs={6} md={6}>
                         <AnsButton handler={this.handler} round={this.state.round} answer={this.state.b3}/>
                     </Col>
 
-                    <Col xs={6} md={6} style = {styles.question}>
+                    <Col xs={6} md={6}>
                         <AnsButton handler={this.handler} round={this.state.round} answer={this.state.b4}/>
+                    </Col>
+                </Grid>
+                <br />
+                <br />
+                <Grid className="time">
+                    <Col xs={12} md={6}>
+                        <p style={styles.result}>
+                            {(this.state.totSeconds).toFixed(2)}
+                        </p>
+                    </Col>
+
+                    <Col xs={12} md={6}>
+                        <p style={styles.result}>
+                            {(this.state.seconds).toFixed(2)}
+                        </p>
                     </Col>
                 </Grid>
             </div>
@@ -140,13 +170,15 @@ class Practice extends Component {
 let styles = {
     grid: {
         fontSize: 35,
-        fontFamily: "sans-serif",
+        fontFamily: "Roboto Mono",
         marginTop: 30,
         marginBottom: 30,
     },
 
-    question: {
-
+    result: {
+        fontSize: 45,
+        fontFamily: "Roboto Mono",
+        paddingBottom: 30,
     }
 }
 
