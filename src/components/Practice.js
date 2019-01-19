@@ -123,7 +123,7 @@ class Practice extends Component {
         if (redirect === 11) {
             return <Redirect to={{
                     pathname: '/results',
-                    state: { score: this.state.score }
+                    state: { score: this.state.score , seconds: this.state.totSeconds }
                 }}/>;
         }
         return (

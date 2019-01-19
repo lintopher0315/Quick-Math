@@ -9,6 +9,8 @@ class Results extends Component {
             <div className="results">
                 <p style={styles.grid}>
                     Score: {this.props.location.state.score}
+                    <br />
+                    Time: {this.props.location.state.seconds.toFixed(2)}
                 </p>
                 <Link to='/'>
                     <Button bsStyle="primary">
