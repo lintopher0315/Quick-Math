@@ -15,6 +15,7 @@ class QuizResults extends Component {
             time: this.props.location.state.seconds,
             order: this.props.location.state.order,
             seconds: 0,
+            opponentSeconds: this.props.location.state.opponentSeconds,
             done: false,
         }
     }
@@ -92,9 +93,9 @@ class QuizResults extends Component {
                     <br />
                     <br />
                     <br />
-                    {this.state.username}:{this.state.score}
+                    {this.state.username}:{this.state.score}:{this.state.time}
                     <br />
-                    {this.state.opponent}:{this.state.opponentScore}
+                    {this.state.opponent}:{this.state.opponentScore}:{this.state.opponentSeconds}
                     <br />
 
                 </div>

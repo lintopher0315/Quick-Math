@@ -25,7 +25,10 @@ class QuizPage extends Component {
             score: 0,
             opponentScore: 0,
             opponentQuestion: 1,
-            seconds: 0
+            seconds: 0,
+            opponentSeconds: 0,
+            running: true,
+            opponentRunning: true
         }
     }
 
@@ -133,9 +136,22 @@ class QuizPage extends Component {
     }
 
     tick() {
-        this.setState(prevState => ({
-            seconds: prevState.seconds + 1
-        }));
+        if (this.state.round === 11) {
+            this.state.running = false;
+        }
+        if (this.state.opponentQuestion === 11) {
+            this.state.opponentRunning = false;
+        }
+        if (this.state.opponentRunning) {
+            this.setState(prevState => ({
+                opponentSeconds: prevState.opponentSeconds + 1
+            }));
+        }
+        if (this.state.running) {
+            this.setState(prevState => ({
+                seconds: prevState.seconds + 1
+            }));
+        }
         fetch('/users/opponentscore', {
             method: 'POST',
             body: JSON.stringify({
@@ -211,6 +227,7 @@ class QuizPage extends Component {
                     opponentScore: this.state.opponentScore,
                     seconds: this.state.seconds,
                     order: this.state.order,
+                    opponentSeconds: this.state.opponentSeconds,
                 }
             }}/>;
         }
