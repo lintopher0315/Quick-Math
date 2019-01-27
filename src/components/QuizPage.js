@@ -137,10 +137,10 @@ class QuizPage extends Component {
 
     tick() {
         if (this.state.round === 11) {
-            this.state.running = false;
+            this.setState({running: false});
         }
         if (this.state.opponentQuestion === 11) {
-            this.state.opponentRunning = false;
+            this.setState({opponentRunning: false});
         }
         if (this.state.opponentRunning) {
             this.setState(prevState => ({

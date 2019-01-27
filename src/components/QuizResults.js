@@ -92,23 +92,22 @@ class QuizResults extends Component {
                     Here are the results!
                     <br />
                     <br />
-                    <br />
                     {this.state.username}
                     <br />
-                    {this.state.score}
+                    Score: {this.state.score}
                     <br />
-                    {this.state.time}
-                    <br /><br /><br />
+                    Time: {this.state.time}
+                    <br /><br />
                     {this.state.opponent}
                     <br />
-                    {this.state.opponentScore}
+                    Score: {this.state.opponentScore}
                     <br />
-                    {this.state.opponentSeconds}
+                    Time: {this.state.opponentSeconds}
                     <br />
 
                 </div>
                 <Link to='/'>
-                    <Button bsStyle="primary">
+                    <Button bsStyle="primary" style = {{marginBottom: 20}}>
                         Home
                     </Button>
                 </Link>
