@@ -93,9 +93,17 @@ class QuizResults extends Component {
                     <br />
                     <br />
                     <br />
-                    {this.state.username}:{this.state.score}:{this.state.time}
+                    {this.state.username}
                     <br />
-                    {this.state.opponent}:{this.state.opponentScore}:{this.state.opponentSeconds}
+                    {this.state.score}
+                    <br />
+                    {this.state.time}
+                    <br /><br /><br />
+                    {this.state.opponent}
+                    <br />
+                    {this.state.opponentScore}
+                    <br />
+                    {this.state.opponentSeconds}
                     <br />
 
                 </div>
@@ -112,7 +120,7 @@ class QuizResults extends Component {
 let styles = {
     grid: {
         fontSize: 35,
-        fontFamily: "sans-serif",
+        fontFamily: "Roboto Mono",
         marginTop: 30,
         marginBottom: 30,
     },

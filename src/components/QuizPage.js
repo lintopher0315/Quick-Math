@@ -243,19 +243,19 @@ class QuizPage extends Component {
                 <Question ques={this.state.question} round={this.state.round}/>
 
                 <Grid className="questions" style = {styles.grid}>
-                    <Col xs={12} md={6} style = {styles.question}>
+                    <Col xs={12} md={6}>
                         <AnsButton handler={this.handler} round={this.state.round} answer={this.state.b1}/>
                     </Col>
 
-                    <Col xs={12} md={6} style = {styles.question}>
+                    <Col xs={12} md={6}>
                         <AnsButton handler={this.handler} round={this.state.round} answer={this.state.b2}/>
                     </Col>
 
-                    <Col xs={6} md={6} style = {styles.question}>
+                    <Col xs={6} md={6}>
                         <AnsButton handler={this.handler} round={this.state.round} answer={this.state.b3}/>
                     </Col>
 
-                    <Col xs={6} md={6} style = {styles.question}>
+                    <Col xs={6} md={6}>
                         <AnsButton handler={this.handler} round={this.state.round} answer={this.state.b4}/>
                     </Col>
                 </Grid>
@@ -271,6 +271,9 @@ class QuizPage extends Component {
                         </p>
                     </Col>
                 </Grid>
+                <p style={styles.time}>
+                    {this.state.seconds}
+                </p>
             </div>
         );
     }
@@ -279,13 +282,15 @@ class QuizPage extends Component {
 let styles = {
     grid: {
         fontSize: 35,
-        fontFamily: "sans-serif",
+        fontFamily: "Roboto Mono",
         marginTop: 30,
         marginBottom: 30,
     },
 
-    question: {
-
+    time: {
+        fontSize: 45,
+        fontFamily: "Roboto Mono",
+        paddingBottom: 30,
     }
 }
 
