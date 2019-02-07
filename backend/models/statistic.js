@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/statistics', { useNewUrlParser: true} );
+mongoose.connect('mongodb://localhost:27017/customers', { useNewUrlParser: true} );
 
 var dba = mongoose.connection;
 
