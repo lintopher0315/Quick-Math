@@ -51,7 +51,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
   aliases: ["JSX", "Immutable"],
   fields: {
     expression: {
-      validate: (0, _utils.assertNodeType)("Expression")
+      validate: (0, _utils.assertNodeType)("Expression", "JSXEmptyExpression")
     }
   }
 });

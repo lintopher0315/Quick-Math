@@ -9,6 +9,7 @@ import Practice from './Practice';
 import Results from './Results';
 import Search from './Search';
 import QuizResults from './QuizResults';
+import Profile from './Profile';
 
 class Header extends Component {
 
@@ -65,9 +66,11 @@ class Header extends Component {
                                             Home
                                         </Button>
                                     </Link>
-                                    <Button bsStyle="default" style={{fontFamily: 'Roboto Mono', fontSize: 25,}}>
-                                        {this.state.username}
-                                    </Button>
+                                    <Link to='/profile'>
+                                        <Button bsStyle="default" style={{fontFamily: 'Roboto Mono', fontSize: 25,}}>
+                                            {this.state.username}
+                                        </Button>
+                                    </Link>
                                 </div>
                             ) : (
                                 <Link to='/' style={{marginRight: 35}}>
@@ -117,6 +120,7 @@ class Header extends Component {
                     <Route path='/results' component={Results} />
                     <Route path='/search' component={() => <Search user={this.state.username}/>} />
                     <Route path='/quizresults' component={QuizResults} />
+                    <Route path='/profile' component={Profile} />
                 </Switch>
             </div>
         );
