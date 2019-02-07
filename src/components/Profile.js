@@ -14,7 +14,7 @@ class Profile extends Component {
                     data: [20, 23, 24, 27, 35, 40, 26, 37, 34, 24],
                     label: "Username",
                     borderColor: "#3e95cd",
-                    fill: false
+                    fill: false,
                 },]
             },
             playScoreData: {
@@ -39,7 +39,7 @@ class Profile extends Component {
                 labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 datasets: [{
                     data: [20, 23, 24, 27, 35, 40, 26, 37, 34, 24],
-                    label: "Username",
+                    label: "",
                     borderColor: "#f4c741",
                     fill: false
                 },]
@@ -59,7 +59,24 @@ class Profile extends Component {
                                 maintainAspectRatio: true,
                                 title: {
                                     display: true,
-                                    text: 'Username',
+                                    text: 'Score of Past 10 Matches',
+                                    fontFamily: 'Roboto Mono',
+                                },
+                                scales: {
+                                    xAxes: [{
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Last 10 Matches',
+                                            fontFamily: 'Roboto Mono',
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Score',
+                                            fontFamily: 'Roboto Mono',
+                                        }
+                                    }]
                                 }
                             }}
                         />
@@ -75,7 +92,24 @@ class Profile extends Component {
                                 maintainAspectRatio: true,
                                 title: {
                                     display:true,
-                                    text: 'Username',
+                                    text: 'Score of Past 10 Matches',
+                                    fontFamily: 'Roboto Mono',
+                                },
+                                scales: {
+                                    xAxes: [{
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Last 10 Matches',
+                                            fontFamily: 'Roboto Mono',
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Score',
+                                            fontFamily: 'Roboto Mono',
+                                        }
+                                    }]
                                 }
                             }}
                         />
@@ -83,6 +117,7 @@ class Profile extends Component {
                 </Col>
 
                 <Col xs={8} md={6}>
+                    <br />
                     <div className="practiceTime">
                         <Line
                             data={this.state.practiceTimeData}
@@ -90,7 +125,24 @@ class Profile extends Component {
                                 maintainAspectRatio: true,
                                 title: {
                                     display:true,
-                                    text: 'Username',
+                                    text: 'Time of Past 10 Matches',
+                                    fontFamily: 'Roboto Mono',
+                                },
+                                scales: {
+                                    xAxes: [{
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Last 10 Matches',
+                                            fontFamily: 'Roboto Mono',
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Time (seconds)',
+                                            fontFamily: 'Roboto Mono',
+                                        }
+                                    }]
                                 }
                             }}
                         />
@@ -98,6 +150,7 @@ class Profile extends Component {
                 </Col>
 
                 <Col xs={8} md={6}>
+                    <br />
                     <div className="playTime">
                         <Line
                             data={this.state.playTimeData}
@@ -105,7 +158,24 @@ class Profile extends Component {
                                 maintainAspectRatio: true,
                                 title: {
                                     display:true,
-                                    text: 'Username',
+                                    text: 'Time of Past 10 Matches',
+                                    fontFamily: 'Roboto Mono',
+                                },
+                                scales: {
+                                    xAxes: [{
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Last 10 Matches',
+                                            fontFamily: 'Roboto Mono',
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Time (seconds)',
+                                            fontFamily: 'Roboto Mono',
+                                        }
+                                    }]
                                 }
                             }}
                         />
