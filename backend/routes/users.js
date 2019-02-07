@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var router = express.Router();
 
+var Statistic = require('../models/statistic');
 var Match = require('../models/match');
 var Question = require('../models/question');
 var Token = require('../models/token');

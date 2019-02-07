@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Col, Button } from 'react-bootstrap';
+import { Grid, Col } from 'react-bootstrap';
 import { Line } from 'react-chartjs-2';
 
 class Profile extends Component {
