@@ -82,6 +82,23 @@ class QuizResults extends Component {
                 console.log("status: online");
             }
         })
+        fetch('/users/playstatistic', {
+            method: 'POST',
+            body: JSON.stringify({
+                usr: this.state.username,
+                score: this.state.score,
+                time: this.state.time,
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => res.json())
+        .then(json => {
+            if (json.success) {
+                console.log("play statistic recorded");
+            }
+        })
     }
 
     render() {
