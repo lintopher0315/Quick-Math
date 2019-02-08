@@ -1,6 +1,6 @@
 ## Quick Math
 
-Quick Match is a competitive math website designed to be fast and easily accessbile to the user.
+Quick Match is a competitive math website designed to be fast and easily accessible to the user.
 
 ## Description
 
