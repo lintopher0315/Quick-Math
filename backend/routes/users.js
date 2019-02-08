@@ -15,6 +15,33 @@ router.get('/', function(req, res, next) {
     res.send("users");
 });
 
+router.post('/practicestatistic', function(req, res) {
+    var username = req.body.usr;
+    var score = req.body.score;
+    var time = req.body.time;
+    var date = new Date();
+
+    console.log(username);
+
+    var newStatistic = new Statistic({
+        username: username,
+        mode: 'practice',
+        date: date,
+        score: score,
+        time: time,
+    });
+
+    Statistic.createStatistic(newStatistic, function(err, statistic) {
+        if (err) throw err;
+        console.log(statistic);
+    })
+
+    return res.send({
+        success: true,
+        status: 200,
+    });
+})
+
 router.get('/check', function(req, res, next) {
   //res.send('respond with a resource');
     res.send("/check");

@@ -12,6 +12,7 @@ class Practice extends Component {
         this.handler = this.handler.bind(this);
 
         this.state = {
+            username: this.props.user,
             round: 1,
             question: '',
             answer: '',
@@ -123,7 +124,7 @@ class Practice extends Component {
         if (redirect === 11) {
             return <Redirect to={{
                     pathname: '/results',
-                    state: { score: this.state.score , seconds: this.state.totSeconds }
+                    state: { username: this.state.username, score: this.state.score, seconds: this.state.totSeconds }
                 }}/>;
         }
         return (

@@ -116,7 +116,7 @@ class Header extends Component {
                     <Route path='/login' component={() => <Login handler={this.handler}/>} />
                     <Route path='/signup' component={SignUp} />
                     <Route path='/quiz' component={QuizPage} />
-                    <Route path='/practice' component={Practice} />
+                    <Route path='/practice' component={() => <Practice user={this.state.username}/>} />
                     <Route path='/results' component={Results} />
                     <Route path='/search' component={() => <Search user={this.state.username}/>} />
                     <Route path='/quizresults' component={QuizResults} />
