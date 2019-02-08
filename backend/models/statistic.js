@@ -9,6 +9,9 @@ var StatisticSchema = mongoose.Schema({
         type: String,
         index: true
     },
+    mode: {
+        type: String,
+    },
     date: {
         type: Date,
     },
