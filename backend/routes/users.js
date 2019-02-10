@@ -15,6 +15,26 @@ router.get('/', function(req, res, next) {
     res.send("users");
 });
 
+router.post('/displaypractice', function(req, res) {
+    var username = req.body.usr;
+
+    Statistic.find({username: username, mode: 'practice'}).exec(
+        function(err, statistic) {
+            return res.send(JSON.stringify(statistic));
+        }
+    )
+})
+
+router.post('/displayplay', function(req, res) {
+    var username = req.body.usr;
+
+    Statistic.find({username: username, mode: 'play'}).exec(
+        function(err, statistic) {
+            return res.send(JSON.stringify(statistic));
+        }
+    )
+})
+
 router.post('/playstatistic', function(req, res) {
     var username = req.body.usr;
     var score = req.body.score;

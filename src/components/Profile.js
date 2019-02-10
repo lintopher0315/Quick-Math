@@ -8,43 +8,111 @@ class Profile extends Component {
         super(props);
 
         this.state = {
+            username: this.props.user,
             practiceScoreData: {
-                labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                labels: [],
                 datasets: [{
-                    data: [20, 23, 24, 27, 35, 40, 26, 37, 34, 24],
-                    label: "Username",
+                    data: [],
+                    label: this.props.user,
                     borderColor: "#3e95cd",
                     fill: false,
                 },]
             },
             playScoreData: {
-                labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                labels: [],
                 datasets: [{
-                    data: [20, 23, 24, 27, 35, 40, 26, 37, 34, 24],
-                    label: "Username",
+                    data: [],
+                    label: this.props.user,
                     borderColor: "#f442f1",
                     fill: false
                 },]
             },
             practiceTimeData: {
-                labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                labels: [],
                 datasets: [{
-                    data: [20, 23, 24, 27, 35, 40, 26, 37, 34, 24],
-                    label: "Username",
+                    data: [],
+                    label: this.props.user,
                     borderColor: "#41f4bb",
                     fill: false
                 },]
             },
             playTimeData: {
-                labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                labels: [],
                 datasets: [{
-                    data: [20, 23, 24, 27, 35, 40, 26, 37, 34, 24],
-                    label: "",
+                    data: [],
+                    label: this.props.user,
                     borderColor: "#f4c741",
                     fill: false
                 },]
             },
         };
+    }
+
+    componentDidMount() {
+        fetch('/users/displaypractice', {
+            method: 'POST',
+            body: JSON.stringify({
+                usr: this.state.username,
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => res.json())
+        .then(json => {
+            let practiceScoreData = Object.assign({}, this.state.practiceScoreData);
+            for (var i = 0; i < json.length; i++) {
+                if (i === 10) {
+                    break;
+                }
+                practiceScoreData.datasets[0].data.push(json[i].score);
+                practiceScoreData.labels.push(json[i].date.substring(0, 10));
+            }
+
+            let practiceTimeData = Object.assign({}, this.state.practiceTimeData);
+            for (i = 0; i < json.length; i++) {
+                if (i === 10) {
+                    break;
+                }
+                practiceTimeData.datasets[0].data.push(Math.round(json[i].time * 100) / 100);
+                practiceTimeData.labels.push(json[i].date.substring(0, 10));
+            }
+            this.setState({practiceScoreData: practiceScoreData, practiceTimeData: practiceTimeData});
+        })
+
+        fetch('/users/displayplay', {
+            method: 'POST',
+            body: JSON.stringify({
+                usr: this.state.username,
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res => res.json())
+        .then(json => {
+            console.log(json);
+            let playScoreData = Object.assign({}, this.state.playScoreData);
+            for (var i = 0; i < json.length; i++) {
+                if (i === 10) {
+                    break;
+                }
+                playScoreData.datasets[0].data.push(json[i].score);
+                playScoreData.labels.push(json[i].date.substring(0, 10));
+            }
+
+            let playTimeData = Object.assign({}, this.state.playTimeData);
+            for (i = 0; i < json.length; i++) {
+                if (i === 10) {
+                    break;
+                }
+                playTimeData.datasets[0].data.push(Math.round(json[i].time * 100) / 100);
+                playTimeData.labels.push(json[i].date.substring(0, 10));
+            }
+            console.log(playScoreData);
+            console.log(playTimeData);
+            this.setState({playScoreData: playScoreData, playTimeData: playTimeData});
+        })
     }
 
     render() {

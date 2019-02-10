@@ -120,7 +120,7 @@ class Header extends Component {
                     <Route path='/results' component={Results} />
                     <Route path='/search' component={() => <Search user={this.state.username}/>} />
                     <Route path='/quizresults' component={QuizResults} />
-                    <Route path='/profile' component={Profile} />
+                    <Route path='/profile' component={() => <Profile user={this.state.username}/>} />
                 </Switch>
             </div>
         );
