@@ -24,7 +24,7 @@ class Home extends Component {
                         <div className="button" style={styles.text}>
                             <Grid className="select" fluid={true}>
                                 <Col xs={12} md={6}>
-                                    <p>
+                                    <p style={{paddingTop: 30}}>
                                         Compete against players online to complete a set of <br />math problems before they finish.
                                     </p>
                                     <Link to='/search'>
@@ -34,7 +34,7 @@ class Home extends Component {
                                     </Link>
                                 </Col>
                                 <Col xs={12} md={6}>
-                                    <p>
+                                    <p style={{paddingTop: 30}}>
                                         Practice a set of problems on your own to enhance <br />your speed and improve your stats.
                                     </p>
                                     <Link to='/practice'>
@@ -44,6 +44,9 @@ class Home extends Component {
                                     </Link>
                                 </Col>
                             </Grid>
+                            <p style={{paddingTop: 350}}>
+                                Take a look at your recent stats by clicking on the username button.
+                            </p>
                         </div>
                     </div>
                 ): (
