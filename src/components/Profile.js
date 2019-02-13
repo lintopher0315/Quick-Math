@@ -49,6 +49,8 @@ class Profile extends Component {
     }
 
     componentDidMount() {
+        var practiceScoreData = [];
+        var practiceTimeData = [];
         fetch('/users/displaypractice', {
             method: 'POST',
             body: JSON.stringify({
@@ -60,7 +62,7 @@ class Profile extends Component {
         })
         .then(res => res.json())
         .then(json => {
-            let practiceScoreData = Object.assign({}, this.state.practiceScoreData);
+            practiceScoreData = Object.assign({}, this.state.practiceScoreData);
             for (var i = 0; i < json.length; i++) {
                 if (i === 10) {
                     break;
@@ -69,7 +71,7 @@ class Profile extends Component {
                 practiceScoreData.labels.push(json[i].date.substring(0, 10));
             }
 
-            let practiceTimeData = Object.assign({}, this.state.practiceTimeData);
+            practiceTimeData = Object.assign({}, this.state.practiceTimeData);
             for (i = 0; i < json.length; i++) {
                 if (i === 10) {
                     break;
@@ -77,7 +79,7 @@ class Profile extends Component {
                 practiceTimeData.datasets[0].data.push(Math.round(json[i].time * 100) / 100);
                 practiceTimeData.labels.push(json[i].date.substring(0, 10));
             }
-            this.setState({practiceScoreData: practiceScoreData, practiceTimeData: practiceTimeData});
+            //this.setState({practiceScoreData: practiceScoreData, practiceTimeData: practiceTimeData});
         })
 
         fetch('/users/displayplay', {
@@ -109,9 +111,7 @@ class Profile extends Component {
                 playTimeData.datasets[0].data.push(Math.round(json[i].time * 100) / 100);
                 playTimeData.labels.push(json[i].date.substring(0, 10));
             }
-            console.log(playScoreData);
-            console.log(playTimeData);
-            this.setState({playScoreData: playScoreData, playTimeData: playTimeData});
+            this.setState({practiceScoreData: practiceScoreData, practiceTimeData: practiceTimeData, playScoreData: playScoreData, playTimeData: playTimeData});
         })
     }
 
