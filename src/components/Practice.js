@@ -43,23 +43,28 @@ class Practice extends Component {
         this.setState({
             round: u,
         });
-        fetch('/users/question')
-        .then(res => res.json())
-        .then(json => {
-            console.log(json);
-            var q = json.question;
-            var a = json.answer;
-            this.setState({ question: q, answer: a});
-            this.randomAssign(this.state.answer);
-        })
+        if (this.state.round < 10) {
+            fetch('/users/question')
+            .then(res => res.json())
+            .then(json => {
+                console.log(json);
+                var q = json.question;
+                var a = json.answer;
+                this.setState({ question: q, answer: a});
+                this.randomAssign(this.state.answer);
+            })
+        }
     }
 
     randomExclude(ans) {
-        var n1 = Math.floor(Math.random() * 50);
-        if (n1 >= ans) {
+        var n1 = Math.floor(Math.random() * 30 - 15);
+        if (Number(ans) + n1 < 0) {
+            n1 = Math.floor(Math.random() * 30 - 15);
+        }
+        if (n1 >= 0) {
             n1++;
         }
-        return n1;
+        return Number(ans) + n1;
     }
 
     randomAssign(ans) {

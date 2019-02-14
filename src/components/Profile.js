@@ -79,7 +79,6 @@ class Profile extends Component {
                 practiceTimeData.datasets[0].data.push(Math.round(json[i].time * 100) / 100);
                 practiceTimeData.labels.push(json[i].date.substring(0, 10));
             }
-            //this.setState({practiceScoreData: practiceScoreData, practiceTimeData: practiceTimeData});
         })
 
         fetch('/users/displayplay', {
@@ -93,7 +92,6 @@ class Profile extends Component {
         })
         .then(res => res.json())
         .then(json => {
-            console.log(json);
             let playScoreData = Object.assign({}, this.state.playScoreData);
             for (var i = 0; i < json.length; i++) {
                 if (i === 10) {

@@ -77,22 +77,26 @@ class QuizPage extends Component {
                 }
             })
         })
-        fetch('/users/question')
-        .then(res => res.json())
-        .then(json => {
-            var q = json.question;
-            var a = json.answer;
-            this.setState({ question: q, answer: a});
-            this.randomAssign(this.state.answer);
-        })
+        if (this.state.round < 10) {
+            fetch('/users/question')
+            .then(res => res.json())
+            .then(json => {
+                var q = json.question;
+                var a = json.answer;
+                this.setState({ question: q, answer: a});
+                this.randomAssign(this.state.answer);
+            })
+        }
     }
 
     randomExclude(ans) {
-        var n1 = Math.floor(Math.random() * 50);
-        if (n1 >= ans) {
-            n1++;
+        var n1 = Math.floor(Math.random() * 30 + 1);
+        if (Math.random() > 0.5) {
+            return Number(ans) - n1;
         }
-        return n1;
+        else {
+            return Number(ans) + n1;
+        }
     }
 
     randomAssign(ans) {
