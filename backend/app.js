@@ -11,12 +11,14 @@ var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
+var path = require('path');
 var db = mongoose.connection;
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+const PORT = process.env.PORT || 3001;
 
 // view engine setup
 app.use(bodyParser.json());
@@ -79,6 +81,18 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('../build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
+  });
+}
+
+app.listen(PORT, () => {
+  console.log(`Server is starting at PORT: ${PORT}`);
 });
 
 module.exports = app;
