@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
-var session = require('express-session');
+//var session = require('express-session');
 var passport = require('passport');
 var expressValidator = require('express-validator');
 var LocalStrategy = require('passport-local').Strategy;
@@ -31,14 +31,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 //sessions
-app.use(session({
+/*app.use(session({
     secret:'secret',
     saveUninitialized: true,
     resave: true
 }));
 //passport
 app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.session());*/
 
 //validator
 app.use(expressValidator({
