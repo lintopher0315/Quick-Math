@@ -39,6 +39,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 //passport
 app.use(passport.initialize());
 app.use(passport.session());*/
+app.use(express.static(path.join(__dirname, "client", "build")));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 //validator
 app.use(expressValidator({
@@ -83,13 +88,13 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-//if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'client/build')));
+/*if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, "client", "build")));
 
-  app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname+'/client/build/index.html'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
   });
-//}
+}*/
 
 app.listen(PORT, () => {
   console.log(`Server is starting at PORT: ${PORT}`);
