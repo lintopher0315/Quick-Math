@@ -319,18 +319,6 @@ router.post('/waiting', function(req, res) {
     })
 })
 
-/*router.get('/question', function(req, res, next) {
-    Question.countDocuments().exec(function (err, count) {
-        var random = Math.floor(Math.random() * count);
-
-        Question.findOne().skip(random).exec(
-            function(err, question) {
-                return res.send(JSON.stringify(question));
-            }
-        )
-    })
-});*/
-
 router.post('/question', function(req, res) {
     Question.countDocuments().exec(function (err, count) {
         var random = Math.floor(Math.random() * count);

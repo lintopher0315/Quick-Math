@@ -78,7 +78,15 @@ class QuizPage extends Component {
             })
         })
         if (this.state.round < 10) {
-            fetch('/users/question')
+            fetch('/users/question', {
+                method: 'POST',
+                body: JSON.stringify({
+                    usr: this.state.username,
+                }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
             .then(res => res.json())
             .then(json => {
                 var q = json.question;
@@ -209,15 +217,6 @@ class QuizPage extends Component {
             }
             this.setState({ opponent: q });
         })
-
-        /*fetch('/users/question')
-        .then(res => res.json())
-        .then(json => {
-            var q = json.question;
-            var a = json.answer;
-            this.setState({ question: q, answer: a});
-            this.randomAssign(this.state.answer);
-        })*/
 
         fetch('/users/question', {
             method: 'POST',

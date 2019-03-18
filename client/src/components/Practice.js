@@ -44,7 +44,15 @@ class Practice extends Component {
             round: u,
         });
         if (this.state.round < 10) {
-            fetch('/users/question')
+            fetch('/users/question', {
+                method: 'POST',
+                body: JSON.stringify({
+                    usr: this.state.username,
+                }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
             .then(res => res.json())
             .then(json => {
                 console.log(json);
@@ -113,15 +121,6 @@ class Practice extends Component {
 
     componentDidMount() {
         this.interval = setInterval(() => this.tick(), 100)
-        /*fetch('/users/question')
-        .then(res => res.json())
-        .then(json => {
-            console.log(json);
-            var q = json.question;
-            var a = json.answer;
-            this.setState({ question: q, answer: a});
-            this.randomAssign(this.state.answer);
-        })*/
         fetch('/users/question', {
             method: 'POST',
             body: JSON.stringify({
