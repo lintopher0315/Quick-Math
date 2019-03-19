@@ -370,7 +370,14 @@ router.post('/', function(req, res) {
     let password = req.body.pass;
     console.log(username + " " + password);
 
-    User.find({'username': username, 'password': password}, function(err, user) {
+    if (username.length == 0 || password.length == 0) {
+        return res.send({
+            success: false,
+            status: 500
+        });
+    }
+
+    User.find({'username': username}, function(err, user) {
         if (err) {
             console.log("signup error");
             return done(err);
